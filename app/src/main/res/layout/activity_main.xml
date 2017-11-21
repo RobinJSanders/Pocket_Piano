@@ -5,85 +5,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.rob.pocket_piano.MainActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/Piano_Roll"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="227dp"
         android:background="@color/grey"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
+        android:layout_marginTop="-61dp">
 
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/low_C"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="1dp"
-            android:background="@android:color/white"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
         
 
         <Button
+            style="@style/BlackPianoKey"
             android:id="@+id/Cs"
-            android:layout_width="52dp"
-            android:layout_height="200dp"
             android:layout_marginTop="1dp"
-            android:background="@android:color/black"
             app:layout_constraintLeft_toRightOf="@+id/low_C"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+           />
+
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/D"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/Cs"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
 
         <Button
+            style="@style/BlackPianoKey"
             android:id="@+id/Ds"
-            android:layout_width="52dp"
-            android:layout_height="200dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/black"
             app:layout_constraintLeft_toRightOf="@+id/D"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/E"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginTop="1dp"
-            android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/Ds"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/F"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
-            android:layout_marginLeft="2dp"
+            android:layout_marginLeft="1dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/E"
             app:layout_constraintTop_toTopOf="parent"
-           />
+            />
 
         <Button
+            style="@style/BlackPianoKey"
             android:id="@+id/Fs"
-            android:layout_width="52dp"
-            android:layout_height="200dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/black"
             app:layout_constraintLeft_toRightOf="@+id/F"
@@ -91,60 +86,60 @@
             />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/G"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/Fs"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/BlackPianoKey"
             android:id="@+id/Gs"
-            android:layout_width="52dp"
-            android:layout_height="200dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/black"
             app:layout_constraintLeft_toRightOf="@+id/G"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/A"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/Gs"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/BlackPianoKey"
             android:id="@+id/As"
-            android:layout_width="52dp"
-            android:layout_height="200dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/black"
             app:layout_constraintLeft_toRightOf="@+id/A"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/B"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/As"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <Button
+            style="@style/WhitePianoKey"
             android:id="@+id/High_C"
-            android:layout_width="52dp"
-            android:layout_height="226dp"
             android:layout_marginLeft="1dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/white"
             app:layout_constraintLeft_toRightOf="@+id/B"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
