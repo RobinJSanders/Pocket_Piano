@@ -20,6 +20,16 @@
         <item name="android:background">@android:color/black</item>
     </style>
 
+    <style name="VoiceButtonDeselected" parent="@android:style/Widget.Button">
+        <item name="android:background">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="VoiceButtonSelected" parent="@android:style/Widget.Button">
+        <item name="android:background">@android:color/black</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 
 
 </resources>
