@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import static android.R.color.black;
-
 
 public class MainActivity extends AppCompatActivity
 {
@@ -211,6 +209,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 loadPianoSounds();
+                resetColors();
+                mBtn_Piano.setBackgroundColor(mColor_Black);
+                mBtn_Piano.setTextColor(mColor_White);
             }
         });
         mBtn_Bass.setOnClickListener(new View.OnClickListener()
@@ -219,7 +220,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 loadBassSounds();
-                mBtn_Bass.setBackgroundColor(getResources().getColor(black));
+                resetColors();
+                mBtn_Bass.setBackgroundColor(mColor_Black);
+                mBtn_Bass.setTextColor(mColor_White);
             }
         });
         mBtn_Brass.setOnClickListener(new View.OnClickListener()
@@ -228,6 +231,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 loadBrassSounds();
+                resetColors();
+                mBtn_Brass.setBackgroundColor(mColor_Black);
+                mBtn_Brass.setTextColor(mColor_White);
             }
         });
         mBtn_Banjo.setOnClickListener(new View.OnClickListener()
@@ -236,6 +242,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 loadBanjoSounds();
+                resetColors();
+                mBtn_Banjo.setBackgroundColor(mColor_Black);
+                mBtn_Banjo.setTextColor(mColor_White);
             }
         });
         mBtn_Synth.setOnClickListener(new View.OnClickListener()
@@ -244,6 +253,9 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 loadSynthSounds();
+                resetColors();
+                mBtn_Synth.setBackgroundColor(mColor_Black);
+                mBtn_Synth.setTextColor(mColor_White);
             }
         });
 
@@ -335,6 +347,20 @@ public class MainActivity extends AppCompatActivity
         mSound_As = mSoundPool.load(this, R.raw.synth_as,1);
         mSound_B = mSoundPool.load(this, R.raw.synth_b,1);
         mSound_High_C = mSoundPool.load(this, R.raw.synth_c2,1);
+    }
+
+    private void resetColors()
+    {
+        mBtn_Piano.setBackgroundColor(mColor_LightBlue);
+        mBtn_Piano.setTextColor(mColor_Black);
+        mBtn_Bass.setBackgroundColor(mColor_LightBlue);
+        mBtn_Bass.setTextColor(mColor_Black);
+        mBtn_Brass.setBackgroundColor(mColor_LightBlue);
+        mBtn_Brass.setTextColor(mColor_Black);
+        mBtn_Banjo.setBackgroundColor(mColor_LightBlue);
+        mBtn_Banjo.setTextColor(mColor_Black);
+        mBtn_Synth.setBackgroundColor(mColor_LightBlue);
+        mBtn_Synth.setTextColor(mColor_Black);
     }
 
 
