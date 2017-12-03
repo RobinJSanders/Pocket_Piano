@@ -13,11 +13,11 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
 {
     //Piano Keys
-    Button mBtn_Low_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_High_C,
+    Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
     //Voice selection buttons
     mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
     //sound IDs
-    private int mSound_Low_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_High_C,
+    private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
 
@@ -32,10 +32,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        /*PresetReverb mReverb = new PresetReverb(0,mMediaPlayer.getAudioSessionId());//<<<<<<<<<<<<<
+        mReverb.setPreset(PresetReverb.PRESET_SMALLROOM);
+        mReverb.setEnabled(true);
+        mMediaPlayer.setAuxEffectSendLevel(1.0f)*/
 
         //assign references to views for keyboard keys
-        mBtn_Low_C =(Button) findViewById(R.id.Btn_Low_C);
+        mBtn_C =(Button) findViewById(R.id.Btn_C);
         mBtn_Cs = (Button) findViewById(R.id.Btn_Cs);
         mBtn_D =(Button) findViewById(R.id.Btn_D);
         mBtn_Ds =(Button) findViewById(R.id.Btn_Ds);
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         mBtn_A =(Button) findViewById(R.id.Btn_A);
         mBtn_As =(Button) findViewById(R.id.Btn_As);
         mBtn_B =(Button) findViewById(R.id.Btn_B);
-        mBtn_High_C =(Button) findViewById(R.id.Btn_High_C);
+        mBtn_C_High =(Button) findViewById(R.id.Btn_C_High);
 
 
         mBtn_Piano = (Button) findViewById(R.id.Btn_Piano);
@@ -86,12 +89,12 @@ public class MainActivity extends AppCompatActivity
         loadPianoSounds();
 
         //OnClickListeners for each piano key
-        mBtn_Low_C.setOnClickListener(new View.OnClickListener()
+        mBtn_C.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_Low_C,1,1,1,0,1);
+                mSoundPool.play(mSound_C,1,1,1,0,1);
             }
         });
 
@@ -193,12 +196,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        mBtn_High_C.setOnClickListener(new View.OnClickListener()
+        mBtn_C_High.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_High_C,1,1,1,0,1);
+                mSoundPool.play(mSound_C_High,1,1,1,0,1);
+
             }
         });
 
@@ -266,7 +270,7 @@ public class MainActivity extends AppCompatActivity
 
     private void loadPianoSounds()
     {
-        mSound_Low_C = mSoundPool.load(this, R.raw.piano_c,1);
+        mSound_C = mSoundPool.load(this, R.raw.piano_c,1);
         mSound_Cs = mSoundPool.load(this, R.raw.piano_cs,1);
         mSound_D = mSoundPool.load(this, R.raw.piano_d,1);
         mSound_Ds = mSoundPool.load(this, R.raw.piano_ds,1);
@@ -278,12 +282,12 @@ public class MainActivity extends AppCompatActivity
         mSound_A = mSoundPool.load(this, R.raw.piano_a,1);
         mSound_As = mSoundPool.load(this, R.raw.piano_as,1);
         mSound_B = mSoundPool.load(this, R.raw.piano_b,1);
-        mSound_High_C = mSoundPool.load(this, R.raw.piano_c2,1);
+        mSound_C_High = mSoundPool.load(this, R.raw.piano_c2,1);
     }
 
     private void loadBassSounds()
     {
-        mSound_Low_C = mSoundPool.load(this, R.raw.bass_c,1);
+        mSound_C = mSoundPool.load(this, R.raw.bass_c,1);
         mSound_Cs = mSoundPool.load(this, R.raw.bass_cs,1);
         mSound_D = mSoundPool.load(this, R.raw.bass_d,1);
         mSound_Ds = mSoundPool.load(this, R.raw.bass_ds,1);
@@ -295,12 +299,12 @@ public class MainActivity extends AppCompatActivity
         mSound_A = mSoundPool.load(this, R.raw.bass_a,1);
         mSound_As = mSoundPool.load(this, R.raw.bass_as,1);
         mSound_B = mSoundPool.load(this, R.raw.bass_b,1);
-        mSound_High_C = mSoundPool.load(this, R.raw.bass_c2,1);
+        mSound_C_High = mSoundPool.load(this, R.raw.bass_c2,1);
     }
 
     private void loadBrassSounds()
     {
-        mSound_Low_C = mSoundPool.load(this, R.raw.brass_c,1);
+        mSound_C = mSoundPool.load(this, R.raw.brass_c,1);
         mSound_Cs = mSoundPool.load(this, R.raw.brass_cs,1);
         mSound_D = mSoundPool.load(this, R.raw.brass_d,1);
         mSound_Ds = mSoundPool.load(this, R.raw.brass_ds,1);
@@ -312,12 +316,12 @@ public class MainActivity extends AppCompatActivity
         mSound_A = mSoundPool.load(this, R.raw.brass_a,1);
         mSound_As = mSoundPool.load(this, R.raw.brass_as,1);
         mSound_B = mSoundPool.load(this, R.raw.brass_b,1);
-        mSound_High_C = mSoundPool.load(this, R.raw.brass_c2,1);
+        mSound_C_High = mSoundPool.load(this, R.raw.brass_c2,1);
     }
 
     private void loadBanjoSounds()
     {
-        mSound_Low_C = mSoundPool.load(this, R.raw.banjo_c,1);
+        mSound_C = mSoundPool.load(this, R.raw.banjo_c,1);
         mSound_Cs = mSoundPool.load(this, R.raw.banjo_cs,1);
         mSound_D = mSoundPool.load(this, R.raw.banjo_d,1);
         mSound_Ds = mSoundPool.load(this, R.raw.banjo_ds,1);
@@ -329,12 +333,12 @@ public class MainActivity extends AppCompatActivity
         mSound_A = mSoundPool.load(this, R.raw.banjo_a,1);
         mSound_As = mSoundPool.load(this, R.raw.banjo_as,1);
         mSound_B = mSoundPool.load(this, R.raw.banjo_b,1);
-        mSound_High_C = mSoundPool.load(this, R.raw.banjo_c2,1);
+        mSound_C_High = mSoundPool.load(this, R.raw.banjo_c2,1);
     }
 
     private void loadSynthSounds()
     {
-        mSound_Low_C = mSoundPool.load(this, R.raw.synth_c,1);
+        mSound_C = mSoundPool.load(this, R.raw.synth_c,1);
         mSound_Cs = mSoundPool.load(this, R.raw.synth_cs,1);
         mSound_D = mSoundPool.load(this, R.raw.synth_d,1);
         mSound_Ds = mSoundPool.load(this, R.raw.synth_ds,1);
@@ -346,7 +350,7 @@ public class MainActivity extends AppCompatActivity
         mSound_A = mSoundPool.load(this, R.raw.synth_a,1);
         mSound_As = mSoundPool.load(this, R.raw.synth_as,1);
         mSound_B = mSoundPool.load(this, R.raw.synth_b,1);
-        mSound_High_C = mSoundPool.load(this, R.raw.synth_c2,1);
+        mSound_C_High = mSoundPool.load(this, R.raw.synth_c2,1);
     }
 
     private void resetColors()
