@@ -135,57 +135,34 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons">
 
-        <Button
+        <ImageButton
             android:id="@+id/Btn_Record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Record"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:background="@android:color/transparent"
+            android:src="@drawable/rec"
 
-        <Button
+            android:text="Record"/>
+
+        <ImageButton
             android:id="@+id/Btn_Stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/Btn_Record"
+            android:background="@android:color/transparent"
+            android:src="@drawable/stop"
+            android:visibility="gone"
             />
 
-        <Button
+
+        <ImageButton
             android:id="@+id/Btn_Play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/Btn_Stop"
+            android:background="@android:color/transparent"
+            android:src="@drawable/play"
             />
 
     </LinearLayout>
 
 
-    <!-- <TextView
-        android:id="@+id/TextView_Instructions"
-        android:layout_width="509dp"
-        android:layout_height="19dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="none"
-        android:text="Select a voice below to change the sound of the keyboard"
-        android:textColor="@android:color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ConstraintLayout_Piano_Roll"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="-8dp"
-        android:text="Currently Selected: Piano"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Btn_Piano"/>-->
 </android.support.constraint.ConstraintLayout>
