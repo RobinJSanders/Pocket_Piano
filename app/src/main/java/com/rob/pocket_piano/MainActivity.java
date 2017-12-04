@@ -9,20 +9,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity
 {
     //Piano Keys
     Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
     //Voice selection buttons
-    mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
+    mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth,
+    //Record and Playback Buttons
+    mBtn_Record, mBtn_Stop, mBtn_Play;
     //sound IDs
     private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
 
     SoundPool mSoundPool;
-
+    List<Integer> mListRecordedSounds;
+    boolean mRecording = false;
 
 
 
@@ -31,11 +37,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*PresetReverb mReverb = new PresetReverb(0,mMediaPlayer.getAudioSessionId());//<<<<<<<<<<<<<
-        mReverb.setPreset(PresetReverb.PRESET_SMALLROOM);
-        mReverb.setEnabled(true);
-        mMediaPlayer.setAuxEffectSendLevel(1.0f)*/
 
         //assign references to views for keyboard keys
         mBtn_C =(Button) findViewById(R.id.Btn_C);
@@ -52,14 +53,18 @@ public class MainActivity extends AppCompatActivity
         mBtn_B =(Button) findViewById(R.id.Btn_B);
         mBtn_C_High =(Button) findViewById(R.id.Btn_C_High);
 
-
+        //assign references to views for voice buttons
         mBtn_Piano = (Button) findViewById(R.id.Btn_Piano);
         mBtn_Bass = (Button) findViewById(R.id.Btn_Bass);
         mBtn_Brass = (Button) findViewById(R.id.Btn_Brass);
         mBtn_Banjo = (Button) findViewById(R.id.Btn_Banjo);
         mBtn_Synth = (Button) findViewById(R.id.Btn_Synth);
 
-
+        //assign references to views for record and playback buttons
+        mBtn_Record =(Button) findViewById(R.id.Btn_Record);
+        mBtn_Stop =(Button) findViewById(R.id.Btn_Stop);
+        mBtn_Play =(Button) findViewById(R.id.Btn_Play);
+        
         //Initialise SoundPool
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP)
         {
@@ -69,6 +74,8 @@ public class MainActivity extends AppCompatActivity
         {
             mSoundPool = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
         }
+
+
 
         //Get colors from resources folder
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.M)
@@ -88,13 +95,16 @@ public class MainActivity extends AppCompatActivity
         //load initial sounds for piano
         loadPianoSounds();
 
+        mListRecordedSounds = new ArrayList<Integer>();
+
+
         //OnClickListeners for each piano key
         mBtn_C.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_C,1,1,1,0,1);
+                PlaySound(mSound_C,1);
             }
         });
 
@@ -103,7 +113,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_Cs,1,1,1,0,1);
+                PlaySound(mSound_Cs,1);
             }
         });
 
@@ -113,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_D,1,1,1,0,1);
+                PlaySound(mSound_D,1);
             }
         });
 
@@ -122,7 +132,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_Ds,1,1,1,0,1);
+                PlaySound(mSound_Ds,1);
             }
         });
 
@@ -131,15 +141,16 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_E,1,1,1,0,1);
+                PlaySound(mSound_E,1);
             }
         });
+
         mBtn_F.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_F,1,1,1,0,1);
+                PlaySound(mSound_F,1);
             }
         });
 
@@ -148,7 +159,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_Fs,1,1,1,0,1);
+                PlaySound(mSound_Fs,1);
             }
         });
 
@@ -157,15 +168,16 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_G,1,1,1,0,1);
+                PlaySound(mSound_G,1);
             }
         });
+
         mBtn_Gs.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_Gs,1,1,1,0,1);
+                PlaySound(mSound_Gs,1);
             }
         });
 
@@ -174,7 +186,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_A,1,1,1,0,1);
+                PlaySound(mSound_A,1);
             }
         });
 
@@ -183,7 +195,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_As,1,1,1,0,1);
+                PlaySound(mSound_As,1);
             }
         });
 
@@ -192,7 +204,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_B,1,1,1,0,1);
+                PlaySound(mSound_B,1);
             }
         });
 
@@ -201,7 +213,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mSoundPool.play(mSound_C_High,1,1,1,0,1);
+                PlaySound(mSound_C_High,1);
 
             }
         });
@@ -263,9 +275,54 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //OnClickListeners for record and playback buttons
+        mBtn_Record.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mListRecordedSounds.clear();
+                mRecording = true;
+            }
+        });
+        mBtn_Stop.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mRecording = false;
+            }
+        });
+
+        mBtn_Play.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                for (final int sound: mListRecordedSounds )
+                {
+
+                    mSoundPool.play(sound, 1,1,1,0,1);
+                    try
+                    {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
 
 
+                }
+            }
+        });
 
+    }
+
+    private void PlaySound(int sound, float rate)
+    {
+        mSoundPool.play(sound,1,1,1,0,rate);
+        if (mRecording = true)
+            mListRecordedSounds.add(sound);
     }
 
     private void loadPianoSounds()
