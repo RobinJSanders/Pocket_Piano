@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity
 {
     //Piano Keys
     private Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
+    //More piano keys for tablet view
+    mBtn_C_Low, mBtn_Cs_Low, mBtn_D_Low, mBtn_Ds_Low, mBtn_E_Low, mBtn_F_Low ,mBtn_Fs_Low, mBtn_G_Low , mBtn_Gs_Low, mBtn_A_Low, mBtn_As_Low, mBtn_B_Low,
+    mBtn_C_Top, mBtn_Cs_High, mBtn_D_High, mBtn_Ds_High, mBtn_E_High, mBtn_F_High ,mBtn_Fs_High, mBtn_G_High , mBtn_Gs_High, mBtn_A_High, mBtn_As_High, mBtn_B_High,
     //Voice selection buttons
     mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
     //Record and Playback Buttons
@@ -68,6 +71,37 @@ public class MainActivity extends AppCompatActivity
         mBtn_As =(Button) findViewById(R.id.Btn_As);
         mBtn_B =(Button) findViewById(R.id.Btn_B);
         mBtn_C_High =(Button) findViewById(R.id.Btn_C_High);
+
+        //more keys used for tablet view only
+        //lower keys
+        mBtn_C_Low =(Button) findViewById(R.id.Btn_C_Low);
+        mBtn_Cs_Low = (Button) findViewById(R.id.Btn_Cs_Low);
+        mBtn_D_Low =(Button) findViewById(R.id.Btn_D_Low);
+        mBtn_Ds_Low =(Button) findViewById(R.id.Btn_Ds_Low);
+        mBtn_E_Low =(Button) findViewById(R.id.Btn_E_Low);
+        mBtn_F_Low =(Button) findViewById(R.id.Btn_F_Low);
+        mBtn_Fs_Low =(Button) findViewById(R.id.Btn_Fs_Low);
+        mBtn_G_Low=(Button) findViewById(R.id.Btn_G_Low);
+        mBtn_Gs_Low =(Button) findViewById(R.id.Btn_Gs_Low);
+        mBtn_A_Low =(Button) findViewById(R.id.Btn_A_Low);
+        mBtn_As_Low =(Button) findViewById(R.id.Btn_As_Low);
+        mBtn_B_Low =(Button) findViewById(R.id.Btn_B_Low);
+        //higher keys
+        mBtn_Cs_High = (Button) findViewById(R.id.Btn_Cs_High);
+        mBtn_D_High =(Button) findViewById(R.id.Btn_D_High);
+        mBtn_Ds_High =(Button) findViewById(R.id.Btn_Ds_High);
+        mBtn_E_High =(Button) findViewById(R.id.Btn_E_High);
+        mBtn_F_High =(Button) findViewById(R.id.Btn_F_High);
+        mBtn_Fs_High =(Button) findViewById(R.id.Btn_Fs_High);
+        mBtn_G_High =(Button) findViewById(R.id.Btn_G_High);
+        mBtn_Gs_High=(Button) findViewById(R.id.Btn_Gs_High);
+        mBtn_A_High =(Button) findViewById(R.id.Btn_A_High);
+        mBtn_As_High =(Button) findViewById(R.id.Btn_As_High);
+        mBtn_B_High =(Button) findViewById(R.id.Btn_B_High);
+        mBtn_C_Top =(Button) findViewById(R.id.Btn_C_Top);
+
+
+
 
         //assign references to views for voice buttons
         mBtn_Piano = (Button) findViewById(R.id.Btn_Piano);
@@ -123,7 +157,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_C,1);
             }
         });
-
         mBtn_Cs.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -132,7 +165,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_Cs,1);
             }
         });
-
         mBtn_D.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -141,7 +173,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_D,1);
             }
         });
-
         mBtn_Ds.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -150,7 +181,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_Ds,1);
             }
         });
-
         mBtn_E.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -159,7 +189,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_E,1);
             }
         });
-
         mBtn_F.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -168,7 +197,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_F,1);
             }
         });
-
         mBtn_Fs.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -177,7 +205,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_Fs,1);
             }
         });
-
         mBtn_G.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -186,7 +213,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_G,1);
             }
         });
-
         mBtn_Gs.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -195,7 +221,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_Gs,1);
             }
         });
-
         mBtn_A.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -204,7 +229,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_A,1);
             }
         });
-
         mBtn_As.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -213,7 +237,6 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_As,1);
             }
         });
-
         mBtn_B.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -222,13 +245,207 @@ public class MainActivity extends AppCompatActivity
                 playSound(mSound_B,1);
             }
         });
-
         mBtn_C_High.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                playSound(mSound_C,1);
+                playSound(mSound_C_High,1);
+
+            }
+        });
+
+        //piano keys used in xl tablet view only
+        mBtn_C_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_C,0.5f);
+            }
+        });
+        mBtn_Cs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Cs,0.5f);
+            }
+        });
+        mBtn_D_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_D,0.5f);
+            }
+        });
+        mBtn_Ds_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Ds,0.5f);
+            }
+        });
+        mBtn_E_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_E,0.5f);
+            }
+        });
+        mBtn_F_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_F,0.5f);
+            }
+        });
+        mBtn_Fs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Fs,0.5f);
+            }
+        });
+        mBtn_G_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_G,0.5f);
+            }
+        });
+        mBtn_Gs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Gs,0.5f);
+            }
+        });
+        mBtn_A_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_A,0.5f);
+            }
+        });
+        mBtn_As_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_As,0.5f);
+            }
+        });
+        mBtn_B_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_B,0.5f);
+            }
+        });
+        mBtn_Cs_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Cs,2f);
+            }
+        });
+        mBtn_D_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_D,2f);
+            }
+        });
+        mBtn_Ds_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Ds,2f);
+            }
+        });
+        mBtn_E_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_E,2f);
+            }
+        });
+        mBtn_F_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_F,2f);
+            }
+        });
+        mBtn_Fs_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Fs,2f);
+            }
+        });
+        mBtn_G_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_G,2f);
+            }
+        });
+        mBtn_Gs_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Gs,2f);
+            }
+        });
+        mBtn_A_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_A,2f);
+            }
+        });
+        mBtn_As_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_As,2f);
+            }
+        });
+        mBtn_B_High.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_B,2f);
+            }
+        });
+        mBtn_C_Top.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_C_High,2f);
 
             }
         });
