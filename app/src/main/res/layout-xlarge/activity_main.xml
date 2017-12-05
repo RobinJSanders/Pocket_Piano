@@ -282,8 +282,35 @@
             android:background="@android:color/transparent"
             android:src="@drawable/play"
             />
+        <TextView
+            android:id="@+id/Lbl_State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ready"
+            android:layout_marginTop="15sp"
+            />
+
+
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/LiniearLayout_Settings"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons"
+        app:layout_constraintLeft_toLeftOf="parent"
 
+        >
+
+        <CheckBox
+            android:id="@+id/Chk_Loop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Loop Playback"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="263dp"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

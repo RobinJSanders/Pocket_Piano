@@ -8,7 +8,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,8 @@ public class MainActivity extends AppCompatActivity
     private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
-
+    private CheckBox mChk_Loop;
+private TextView mLbl_State;
     private SoundPool mSoundPool;
     private List<Tuple<Integer,Float>> mListRecordedSounds;
     private volatile boolean mThreadRunning = false;
@@ -102,7 +105,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
         //assign references to views for voice buttons
         mBtn_Piano = (Button) findViewById(R.id.Btn_Piano);
         mBtn_Bass = (Button) findViewById(R.id.Btn_Bass);
@@ -114,6 +116,8 @@ public class MainActivity extends AppCompatActivity
         mBtn_Record =(ImageButton) findViewById(R.id.Btn_Record);
         mBtn_Stop =(ImageButton) findViewById(R.id.Btn_Stop);
         mBtn_Play =(ImageButton) findViewById(R.id.Btn_Play);
+        mChk_Loop = (CheckBox) findViewById(R.id.Chk_Loop);
+        mLbl_State = (TextView) findViewById(R.id.Lbl_State);
 
         //Initialise SoundPool
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP)
@@ -539,6 +543,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+
     public void startThread(){
         Thread t = new Thread(new Runnable(){
             @Override
@@ -562,7 +568,9 @@ public class MainActivity extends AppCompatActivity
                             e.printStackTrace();
                         }
                     }
-                    mThreadRunning = false;
+                    //loop playback if checkbox is checked
+                    if (!mChk_Loop.isChecked())
+                        mThreadRunning = false;
                 }
             }
         });
@@ -589,6 +597,7 @@ public class MainActivity extends AppCompatActivity
             mBtn_Play.setVisibility(View.VISIBLE);
         }
         mRecordingState = state;
+        mLbl_State.setText(state);
     }
 
 
