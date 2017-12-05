@@ -28,12 +28,24 @@ public class MainActivity extends AppCompatActivity
     mColor_Black, mColor_White, mColor_LightBlue;
 
     private SoundPool mSoundPool;
-    private List<Integer> mListRecordedSounds;
+    private List<Tuple<Integer,Float>> mListRecordedSounds;
+    private volatile boolean mThreadRunning = false;
 
     //determines weather app is currently recording stopped or playing
-private String mRecordingState = "Ready";
+    private String mRecordingState = "Ready";
 
+    public class Tuple<Sample,Rate>
+    {
+        public Sample sample;
+        public Rate rate;
+        //constructor
+        public Tuple(Sample sample, Rate rate)
+        {
+            this.sample = sample;
+            this.rate = rate;
+        }
 
+    }
 
 
     @Override
@@ -99,8 +111,8 @@ private String mRecordingState = "Ready";
         //load initial sounds for piano
         loadPianoSounds();
 
-        mListRecordedSounds = new ArrayList<Integer>();
-
+        //build list for recorded sounds
+        mListRecordedSounds = new ArrayList<>();
 
         //OnClickListeners for each piano key
         mBtn_C.setOnClickListener(new View.OnClickListener()
@@ -216,7 +228,7 @@ private String mRecordingState = "Ready";
             @Override
             public void onClick(View v)
             {
-                playSound(mSound_C_High,1);
+                playSound(mSound_C,1);
 
             }
         });
@@ -285,9 +297,7 @@ private String mRecordingState = "Ready";
             public void onClick(View v)
             {
                 mListRecordedSounds.clear();
-                mRecordingState = "Recording";
-                switchButtonVisibility();
-
+                switchState("Recording");
             }
         });
         mBtn_Stop.setOnClickListener(new View.OnClickListener()
@@ -295,8 +305,8 @@ private String mRecordingState = "Ready";
             @Override
             public void onClick(View v)
             {
-                mRecordingState = "Ready";
-                switchButtonVisibility();
+                mThreadRunning =false;
+                switchState("Ready");
             }
         });
 
@@ -305,50 +315,50 @@ private String mRecordingState = "Ready";
             @Override
             public void onClick(View v)
             {
-                mRecordingState = "Playing";
-                switchButtonVisibility();
-
-              mBtn_Play.post(new Runnable()
-              {// insures that switchButtonVisibility(); method is executed first
-                  @Override
-                  public void run()
-                  {
-                      for (final int sound: mListRecordedSounds )
-                      {
-                          if (mRecordingState == "Ready")
-                          {//break out of loop when stop button is pressed
-                              break;
-                          }
-                          else {
-
-                              mSoundPool.play(sound, 1,1,1,0,1);
-                              try
-                              {
-                                  Thread.sleep(500);
-                              }
-                              catch (InterruptedException e)
-                              {
-                                  e.printStackTrace();
-                              }
-                          }
-                      }
-                      mRecordingState ="Ready";
-                      switchButtonVisibility();
-                  }
-              });
-
+                switchState("Playing");
+                startThread();
             }
         });
 
     }
 
+    public void startThread(){
+        Thread t = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                mThreadRunning = true;
+                while(mThreadRunning)
+                {
+                    for (Tuple<Integer, Float> sound: mListRecordedSounds )
+                    {
+                        if (!mThreadRunning)
+                        {
+                            break;
+                        }
+                        else
+                            mSoundPool.play(sound.sample, 1, 1, 1, 0, sound.rate);
+                        try
+                        {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                    mThreadRunning = false;
+                }
+            }
+        });
+        t.start();
+    }
 
 
 
-    private void switchButtonVisibility()
+
+    private void switchState(String state)
     {
 
-        if (mRecordingState != "Ready")
+        if (state != "Ready")
         {
             mBtn_Stop.setVisibility(View.VISIBLE);
             mBtn_Record.setVisibility(View.GONE);
@@ -361,15 +371,15 @@ private String mRecordingState = "Ready";
             mBtn_Record.setVisibility(View.VISIBLE);
             mBtn_Play.setVisibility(View.VISIBLE);
         }
-
+        mRecordingState = state;
     }
 
 
-    private void playSound(int sound, float rate)
+    private void playSound(int sample, float rate)
     {
-        mSoundPool.play(sound,1,1,1,0,rate);
+        mSoundPool.play(sample,1,1,1,0,rate);
         if (mRecordingState == "Recording")
-            mListRecordedSounds.add(sound);
+        mListRecordedSounds.add(new Tuple(sample,rate));
     }
 
     private void loadPianoSounds()
