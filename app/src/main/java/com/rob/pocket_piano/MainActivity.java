@@ -22,21 +22,23 @@ public class MainActivity extends AppCompatActivity
     private Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
     //More piano keys for tablet view
     mBtn_C_Low, mBtn_Cs_Low, mBtn_D_Low, mBtn_Ds_Low, mBtn_E_Low, mBtn_F_Low ,mBtn_Fs_Low, mBtn_G_Low , mBtn_Gs_Low, mBtn_A_Low, mBtn_As_Low, mBtn_B_Low,
-    mBtn_C_Top, mBtn_Cs_High, mBtn_D_High, mBtn_Ds_High, mBtn_E_High, mBtn_F_High ,mBtn_Fs_High, mBtn_G_High , mBtn_Gs_High, mBtn_A_High, mBtn_As_High, mBtn_B_High,
+            mBtn_C_Top, mBtn_Cs_High, mBtn_D_High, mBtn_Ds_High, mBtn_E_High, mBtn_F_High ,mBtn_Fs_High, mBtn_G_High , mBtn_Gs_High, mBtn_A_High, mBtn_As_High, mBtn_B_High,
+    //Buttons for starting and stopping the beat
+            mBtn_Beat, mBtn_BeatStop,
     //Voice selection buttons
     mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
     //Record and Playback Buttons
     private ImageButton mBtn_Record, mBtn_Stop, mBtn_Play;
     //sound IDs
-    private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High,
+    private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High, mSound_Amen,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
     private CheckBox mChk_Loop;
-private TextView mLbl_State;
+    private TextView mLbl_State;
     private SoundPool mSoundPool;
     private List<Tuple<Integer,Float>> mListRecordedSounds;
-    private volatile boolean mThreadRunning = false;
-
+    private volatile boolean mTrackPlaying = false;
+    private volatile boolean mBeatPlaying = false;
     //determines weather app is currently recording stopped or playing
     private String mRecordingState = "Ready";
 
@@ -74,6 +76,10 @@ private TextView mLbl_State;
         mBtn_As =(Button) findViewById(R.id.Btn_As);
         mBtn_B =(Button) findViewById(R.id.Btn_B);
         mBtn_C_High =(Button) findViewById(R.id.Btn_C_High);
+
+        //create reference to start and stop beat buttons
+        mBtn_Beat = (Button) findViewById(R.id.Btn_Beat) ;
+        mBtn_BeatStop = (Button) findViewById(R.id.Btn_BeatStop);
 
         //more keys used for tablet view only
         //lower keys
@@ -256,6 +262,28 @@ private TextView mLbl_State;
             {
                 playSound(mSound_C_High,1);
 
+            }
+        });
+
+        //OnClickListener for beat button
+        mBtn_Beat.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mBtn_Beat.setVisibility(View.GONE);
+                mBtn_BeatStop.setVisibility(View.VISIBLE);
+                startThreadBeat();
+            }
+        });
+        mBtn_BeatStop.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+               mBeatPlaying = false;
+                mBtn_Beat.setVisibility(View.VISIBLE);
+                mBtn_BeatStop.setVisibility(View.GONE);
             }
         });
 
@@ -526,7 +554,7 @@ private TextView mLbl_State;
             @Override
             public void onClick(View v)
             {
-                mThreadRunning =false;
+                mTrackPlaying =false;
                 switchState("Ready");
             }
         });
@@ -537,24 +565,50 @@ private TextView mLbl_State;
             public void onClick(View v)
             {
                 switchState("Playing");
-                startThread();
+                startThreadTrack();
             }
         });
 
     }
 
-
-
-    public void startThread(){
+    private void startThreadBeat()
+    {
         Thread t = new Thread(new Runnable(){
             @Override
             public void run(){
-                mThreadRunning = true;
-                while(mThreadRunning)
+                mBeatPlaying = true;
+                while(mBeatPlaying)
+                {
+                    /*if (!mBeatPlaying)
+                        break;
+                    else*/
+                    {
+                        mSoundPool.play(mSound_Amen, 1, 1, 1, 0, 1);
+                        try
+                        {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        t.start();
+    }
+
+
+    public void startThreadTrack(){
+        Thread t = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                mTrackPlaying = true;
+                while(mTrackPlaying)
                 {
                     for (Tuple<Integer, Float> sound: mListRecordedSounds )
                     {
-                        if (!mThreadRunning)
+                        if (!mTrackPlaying)
                         {
                             break;
                         }
@@ -570,7 +624,7 @@ private TextView mLbl_State;
                     }
                     //loop playback if checkbox is checked
                     if (!mChk_Loop.isChecked())
-                        mThreadRunning = false;
+                        mTrackPlaying = false;
                 }
             }
         });
@@ -605,7 +659,7 @@ private TextView mLbl_State;
     {
         mSoundPool.play(sample,1,1,1,0,rate);
         if (mRecordingState == "Recording")
-        mListRecordedSounds.add(new Tuple(sample,rate));
+            mListRecordedSounds.add(new Tuple(sample,rate));
     }
 
     private void loadPianoSounds()
@@ -623,6 +677,7 @@ private TextView mLbl_State;
         mSound_As = mSoundPool.load(this, R.raw.piano_as,1);
         mSound_B = mSoundPool.load(this, R.raw.piano_b,1);
         mSound_C_High = mSoundPool.load(this, R.raw.piano_c2,1);
+        mSound_Amen = mSoundPool.load(this, R.raw.amen,1);
     }
 
     private void loadBassSounds()
