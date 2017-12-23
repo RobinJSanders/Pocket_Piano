@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/LinearLayout_PianoKeys"
         android:layout_width="0dp"
-        android:layout_height="155sp"
+        android:layout_height="200dp"
         android:background="@color/grey"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,74 +21,74 @@
         <Button
             android:id="@+id/Btn_C_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="C"/>
+            android:text="C"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Cs_Low"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="C#"/>
+            android:text="C#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_D_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="D"/>
+            android:text="D"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Ds_Low"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="D#"/>
+            android:text="D#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_E_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="E"/>
+            android:text="E"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_F_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="F"/>
+            android:text="F"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Fs_Low"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="F#"/>
+            android:text="F#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_G_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="G"/>
+            android:text="G"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Gs_Low"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="G#"/>
+            android:text="G#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_A_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="A"/>
+            android:text="A"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_As_Low"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="A#"/>
+            android:text="A#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_B_Low"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="B"/>
+            android:text="B"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_C"
@@ -159,74 +159,74 @@
         <Button
             android:id="@+id/Btn_Cs_High"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="C#"/>
+            android:text="C#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_D_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="D"/>
+            android:text="D"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Ds_High"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="D#"/>
+            android:text="D#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_E_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="E"/>
+            android:text="E"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_F_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="F"/>
+            android:text="F"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Fs_High"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="F#"/>
+            android:text="F#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_G_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="G"/>
+            android:text="G"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Gs_High"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="G#"/>
+            android:text="G#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_A_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="A"/>
+            android:text="A"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_As_High"
             style="@style/BlackPianoKey"
-            android:visibility="gone"
-            android:text="A#"/>
+            android:text="A#"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_B_High"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="B"/>
+            android:text="B"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_C_Top"
             style="@style/WhitePianoKey"
-            android:visibility="gone"
-            android:text="C"/>
+            android:text="C"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -272,10 +272,66 @@
 
 
     <LinearLayout
+        android:id="@+id/LiniearLayout_Settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        >
+
+        <CheckBox
+            android:id="@+id/Chk_Loop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Loop Playback"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="263dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LiniearLayout_BeatButtons"
+        android:layout_width="166dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons"
+        android:layout_marginEnd="16dp">
+
+        <Button
+            android:id="@+id/Btn_Beat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Start Beat"
+            />
+
+        <Button
+            android:id="@+id/Btn_BeatStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Stop Beat"
+            android:visibility="gone"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/LiniearLayout_RecordPlaybackButtons"
-        android:layout_width="295dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="-8dp"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons">
@@ -306,71 +362,16 @@
             android:background="@android:color/transparent"
             android:src="@drawable/play"
             />
+
         <TextView
             android:id="@+id/Lbl_State"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ready"
             android:layout_marginTop="15sp"
-            />
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LiniearLayout_Settings"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        >
-
-        <CheckBox
-            android:id="@+id/Chk_Loop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Loop Playback"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="263dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LiniearLayout_BeatButtons"
-        android:layout_width="166dp"
-        android:layout_height="50dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="0dp"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons"
-        >
-
-        <Button
-            android:id="@+id/Btn_Beat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="Start Beat"
-            />
-
-        <Button
-            android:id="@+id/Btn_BeatStop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="Stop Beat"
-            android:visibility="gone"
+            android:text="Ready"
             />
 
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

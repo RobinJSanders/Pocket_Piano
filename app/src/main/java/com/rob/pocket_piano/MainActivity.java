@@ -18,6 +18,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
+    Long startTime;
+    Long endTime;
+    Long length;
     //Piano Keys
     private Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
     //More piano keys for tablet view
@@ -33,24 +36,32 @@ public class MainActivity extends AppCompatActivity
     private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High, mSound_Amen,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
+
     private CheckBox mChk_Loop;
     private TextView mLbl_State;
     private SoundPool mSoundPool;
-    private List<Tuple<Integer,Float>> mListRecordedSounds;
+    private List<Tuple<Integer,Float,Long>> mListRecordedSounds;
+    private  List<Button> mListPianoKeys;
     private volatile boolean mTrackPlaying = false;
     private volatile boolean mBeatPlaying = false;
     //determines weather app is currently recording stopped or playing
     private String mRecordingState = "Ready";
 
-    public class Tuple<Sample,Rate>
+
+
+
+
+    public class Tuple<Sample,Rate,Length>
     {
         public Sample sample;
         public Rate rate;
+        public Length length;
         //constructor
-        public Tuple(Sample sample, Rate rate)
+        public Tuple(Sample sample, Rate rate, Length length)
         {
             this.sample = sample;
             this.rate = rate;
+            this.length = length;
         }
 
     }
@@ -110,7 +121,6 @@ public class MainActivity extends AppCompatActivity
         mBtn_C_Top =(Button) findViewById(R.id.Btn_C_Top);
 
 
-
         //assign references to views for voice buttons
         mBtn_Piano = (Button) findViewById(R.id.Btn_Piano);
         mBtn_Bass = (Button) findViewById(R.id.Btn_Bass);
@@ -118,7 +128,7 @@ public class MainActivity extends AppCompatActivity
         mBtn_Banjo = (Button) findViewById(R.id.Btn_Banjo);
         mBtn_Synth = (Button) findViewById(R.id.Btn_Synth);
 
-        //assign references to views for record and playback buttons
+        //assign references to views for record and playback functions
         mBtn_Record =(ImageButton) findViewById(R.id.Btn_Record);
         mBtn_Stop =(ImageButton) findViewById(R.id.Btn_Stop);
         mBtn_Play =(ImageButton) findViewById(R.id.Btn_Play);
@@ -157,6 +167,7 @@ public class MainActivity extends AppCompatActivity
 
         //build list for recorded sounds
         mListRecordedSounds = new ArrayList<>();
+
 
         //OnClickListeners for each piano key
         mBtn_C.setOnClickListener(new View.OnClickListener()
@@ -482,6 +493,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //create an array list for every piano key
+        mListPianoKeys = new ArrayList<>();
+        mListPianoKeys.add(mBtn_C);
+        mListPianoKeys.add(mBtn_Cs);
+
         //OnClickListeners for each voice selector button
         mBtn_Piano.setOnClickListener(new View.OnClickListener()
         {
@@ -546,6 +562,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 mListRecordedSounds.clear();
+                startTime =System.currentTimeMillis();
                 switchState("Recording");
             }
         });
@@ -579,9 +596,6 @@ public class MainActivity extends AppCompatActivity
                 mBeatPlaying = true;
                 while(mBeatPlaying)
                 {
-                    /*if (!mBeatPlaying)
-                        break;
-                    else*/
                     {
                         mSoundPool.play(mSound_Amen, 1, 1, 1, 0, 1);
                         try
@@ -606,21 +620,21 @@ public class MainActivity extends AppCompatActivity
                 mTrackPlaying = true;
                 while(mTrackPlaying)
                 {
-                    for (Tuple<Integer, Float> sound: mListRecordedSounds )
+                    for (Tuple<Integer, Float, Long> sound: mListRecordedSounds )
                     {
+                        try
+                        {
+                            Thread.sleep(sound.length);
+                        } catch (InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
                         if (!mTrackPlaying)
                         {
                             break;
                         }
                         else
                             mSoundPool.play(sound.sample, 1, 1, 1, 0, sound.rate);
-                        try
-                        {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e)
-                        {
-                            e.printStackTrace();
-                        }
                     }
                     //loop playback if checkbox is checked
                     if (!mChk_Loop.isChecked())
@@ -658,8 +672,21 @@ public class MainActivity extends AppCompatActivity
     private void playSound(int sample, float rate)
     {
         mSoundPool.play(sample,1,1,1,0,rate);
+
         if (mRecordingState == "Recording")
-            mListRecordedSounds.add(new Tuple(sample,rate));
+        {
+            for (Button button:mListPianoKeys)
+            {
+                if (button.isPressed())
+                {
+                    endTime = System.currentTimeMillis();
+                    length = endTime-startTime;
+                    startTime = endTime;
+                    mListRecordedSounds.add(new Tuple(sample, rate, length));
+                }
+            }
+
+        }
     }
 
     private void loadPianoSounds()
