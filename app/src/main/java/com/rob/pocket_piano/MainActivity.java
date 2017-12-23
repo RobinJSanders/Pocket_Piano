@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
     private TextView mLbl_State;
     private SoundPool mSoundPool;
     private List<Tuple<Integer,Float,Long>> mListRecordedSounds;
-    private  List<Button> mListPianoKeys;
+    private List<Button> mListPianoKeys;
     private volatile boolean mTrackPlaying = false;
     private volatile boolean mBeatPlaying = false;
     //determines weather app is currently recording stopped or playing
@@ -119,6 +119,47 @@ public class MainActivity extends AppCompatActivity
         mBtn_As_High =(Button) findViewById(R.id.Btn_As_High);
         mBtn_B_High =(Button) findViewById(R.id.Btn_B_High);
         mBtn_C_Top =(Button) findViewById(R.id.Btn_C_Top);
+
+        //create an array list for every piano key
+        mListPianoKeys = new ArrayList<>();
+        mListPianoKeys.add(mBtn_C_Low);
+        mListPianoKeys.add(mBtn_Cs_Low);
+        mListPianoKeys.add(mBtn_D_Low);
+        mListPianoKeys.add(mBtn_Ds_Low);
+        mListPianoKeys.add(mBtn_E_Low);
+        mListPianoKeys.add(mBtn_F_Low);
+        mListPianoKeys.add(mBtn_Fs_Low);
+        mListPianoKeys.add(mBtn_G_Low);
+        mListPianoKeys.add(mBtn_Gs_Low);
+        mListPianoKeys.add(mBtn_A_Low);
+        mListPianoKeys.add(mBtn_As_Low);
+        mListPianoKeys.add(mBtn_B_Low);
+        mListPianoKeys.add(mBtn_C);
+        mListPianoKeys.add(mBtn_Cs);
+        mListPianoKeys.add(mBtn_D);
+        mListPianoKeys.add(mBtn_Ds);
+        mListPianoKeys.add(mBtn_E);
+        mListPianoKeys.add(mBtn_F);
+        mListPianoKeys.add(mBtn_Fs);
+        mListPianoKeys.add(mBtn_G);
+        mListPianoKeys.add(mBtn_Gs);
+        mListPianoKeys.add(mBtn_A);
+        mListPianoKeys.add(mBtn_As);
+        mListPianoKeys.add(mBtn_B);
+        mListPianoKeys.add(mBtn_C_High);
+        mListPianoKeys.add(mBtn_Cs_High);
+        mListPianoKeys.add(mBtn_D_High);
+        mListPianoKeys.add(mBtn_Ds_High);
+        mListPianoKeys.add(mBtn_E_High);
+        mListPianoKeys.add(mBtn_F_High);
+        mListPianoKeys.add(mBtn_Fs_High);
+        mListPianoKeys.add(mBtn_G_High);
+        mListPianoKeys.add(mBtn_Gs_High);
+        mListPianoKeys.add(mBtn_A_High);
+        mListPianoKeys.add(mBtn_As_High);
+        mListPianoKeys.add(mBtn_B_High);
+        mListPianoKeys.add(mBtn_C_Top);
+
 
 
         //assign references to views for voice buttons
@@ -276,30 +317,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //OnClickListener for beat button
-        mBtn_Beat.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                mBtn_Beat.setVisibility(View.GONE);
-                mBtn_BeatStop.setVisibility(View.VISIBLE);
-                startThreadBeat();
-            }
-        });
-        mBtn_BeatStop.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-               mBeatPlaying = false;
-                mBtn_Beat.setVisibility(View.VISIBLE);
-                mBtn_BeatStop.setVisibility(View.GONE);
-            }
-        });
-
         //piano keys used in xl tablet view only
-        mBtn_C_Low.setOnClickListener(new View.OnClickListener()
+        mBtn_C_High.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -493,10 +512,28 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //create an array list for every piano key
-        mListPianoKeys = new ArrayList<>();
-        mListPianoKeys.add(mBtn_C);
-        mListPianoKeys.add(mBtn_Cs);
+        //OnClickListener for beat button
+        mBtn_Beat.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mBtn_Beat.setVisibility(View.GONE);
+                mBtn_BeatStop.setVisibility(View.VISIBLE);
+                startThreadBeat();
+            }
+        });
+        mBtn_BeatStop.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mBeatPlaying = false;
+                mBtn_Beat.setVisibility(View.VISIBLE);
+                mBtn_BeatStop.setVisibility(View.GONE);
+            }
+        });
+
 
         //OnClickListeners for each voice selector button
         mBtn_Piano.setOnClickListener(new View.OnClickListener()
