@@ -296,7 +296,7 @@
 
     <LinearLayout
         android:id="@+id/LiniearLayout_Settings"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons"
@@ -312,6 +312,17 @@
             android:text="Loop Playback"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="263dp"/>
+
+        <CheckBox
+            android:id="@+id/Chk_AutoTempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
+            android:text="Auto-Adjust Tempo"
+            app:layout_constraintLeft_toRightOf="@+id/LiniearLayout_Settings"
+            tools:layout_editor_absoluteY="287dp"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -347,6 +358,37 @@
             android:visibility="gone"
             />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LiniearLayout_OctavePicker"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LiniearLayout_VoiceButtons"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="0dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/Lbl_Octave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="Select Octave:"
+            />
+
+        <Spinner
+            android:id="@+id/Spn_SelectOctave"
+            android:layout_marginTop="15sp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="middle"
+            />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

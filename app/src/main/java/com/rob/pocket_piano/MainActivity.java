@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,9 +21,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
-    Long startTime;
-    Long endTime;
-    Long length;
     //Piano Keys
     private Button mBtn_C, mBtn_Cs, mBtn_D, mBtn_Ds, mBtn_E, mBtn_F ,mBtn_Fs, mBtn_G , mBtn_Gs, mBtn_A, mBtn_As, mBtn_B, mBtn_C_High,
     //More piano keys for tablet view
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High, mSound_Amen,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
-    //other member variables
+    //Used for recording and playback
     private CheckBox mChk_Loop, mChk_AutoTempo;
     private TextView mLbl_State;
     private SoundPool mSoundPool;
@@ -46,11 +46,14 @@ public class MainActivity extends AppCompatActivity
     private volatile boolean mBeatPlaying = false;
     //determines weather app is currently recording stopped or playing
     private String mRecordingState = "Ready";
+    //variables used for finding time between piano key presses
+    private  Long mStartTime, mEndTime, mLength;
+    //used for octave selection spinner
+    private Spinner mSpn_SelectOctave;
+    ArrayAdapter<CharSequence> mArrayAdapter;
 
 
-
-
-    // inner class used for recording
+    // inner class used for recording and playback
     public class Tuple<Sample,Rate,Length>
     {
         public Sample sample;
@@ -177,6 +180,8 @@ public class MainActivity extends AppCompatActivity
         mChk_AutoTempo = (CheckBox) findViewById(R.id.Chk_AutoTempo);
         mLbl_State = (TextView) findViewById(R.id.Lbl_State);
 
+        //assign references to views for octave select spinner
+
         //Initialise SoundPool
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP)
         {
@@ -212,6 +217,102 @@ public class MainActivity extends AppCompatActivity
 
 
         //OnClickListeners for each piano key
+        mBtn_C_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_C,0.5f);
+            }
+        });
+        mBtn_Cs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Cs,0.5f);
+            }
+        });
+        mBtn_D_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_D,0.5f);
+            }
+        });
+        mBtn_Ds_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Ds,0.5f);
+            }
+        });
+        mBtn_E_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_E,0.5f);
+            }
+        });
+        mBtn_F_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_F,0.5f);
+            }
+        });
+        mBtn_Fs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Fs,0.5f);
+            }
+        });
+        mBtn_G_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_G,0.5f);
+            }
+        });
+        mBtn_Gs_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_Gs,0.5f);
+            }
+        });
+        mBtn_A_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_A,0.5f);
+            }
+        });
+        mBtn_As_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_As,0.5f);
+            }
+        });
+        mBtn_B_Low.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                playSound(mSound_B,0.5f);
+            }
+        });
         mBtn_C.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -317,104 +418,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-        //piano keys used in xl tablet view only
-        mBtn_C_High.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_C,0.5f);
-            }
-        });
-        mBtn_Cs_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_Cs,0.5f);
-            }
-        });
-        mBtn_D_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_D,0.5f);
-            }
-        });
-        mBtn_Ds_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_Ds,0.5f);
-            }
-        });
-        mBtn_E_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_E,0.5f);
-            }
-        });
-        mBtn_F_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_F,0.5f);
-            }
-        });
-        mBtn_Fs_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_Fs,0.5f);
-            }
-        });
-        mBtn_G_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_G,0.5f);
-            }
-        });
-        mBtn_Gs_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_Gs,0.5f);
-            }
-        });
-        mBtn_A_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_A,0.5f);
-            }
-        });
-        mBtn_As_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_As,0.5f);
-            }
-        });
-        mBtn_B_Low.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                playSound(mSound_B,0.5f);
-            }
-        });
         mBtn_Cs_High.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -513,6 +516,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //initialise and enable spinner for selecting octaves
+        mSpn_SelectOctave = (Spinner) findViewById(R.id.Spn_SelectOctave);
+        mArrayAdapter = ArrayAdapter.createFromResource(this, R.array.Octaves, android.R.layout. simple_spinner_item);
+        mArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpn_SelectOctave.setAdapter(mArrayAdapter);
+        mSpn_SelectOctave.setSelection(1);
+
         //OnClickListener for beat button
         mBtn_Beat.setOnClickListener(new View.OnClickListener()
         {
@@ -600,7 +610,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 mListRecordedSounds.clear();
-                startTime =System.currentTimeMillis();
+                mStartTime =System.currentTimeMillis();
                 switchState("Recording");
             }
         });
@@ -623,6 +633,79 @@ public class MainActivity extends AppCompatActivity
                 startThreadTrack();
             }
         });
+
+
+       //Event handler for spinner
+        mSpn_SelectOctave.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                for(Button button:mListPianoKeys)
+                {
+                    button.setVisibility(View.GONE);
+                }
+                if (position == 0)
+                {
+                    mBtn_C_Low.setVisibility(View.VISIBLE);
+                    mBtn_Cs_Low.setVisibility(View.VISIBLE);
+                    mBtn_D_Low.setVisibility(View.VISIBLE);
+                    mBtn_Ds_Low.setVisibility(View.VISIBLE);
+                    mBtn_E_Low.setVisibility(View.VISIBLE);
+                    mBtn_F_Low.setVisibility(View.VISIBLE);
+                    mBtn_Fs_Low.setVisibility(View.VISIBLE);
+                    mBtn_G_Low.setVisibility(View.VISIBLE);
+                    mBtn_Gs_Low.setVisibility(View.VISIBLE);
+                    mBtn_A_Low.setVisibility(View.VISIBLE);
+                    mBtn_As_Low.setVisibility(View.VISIBLE);
+                    mBtn_B_Low.setVisibility(View.VISIBLE);
+                    mBtn_C.setVisibility(View.VISIBLE);
+                }
+                else if (position == 1)
+                {
+                    mBtn_C.setVisibility(View.VISIBLE);
+                    mBtn_Cs.setVisibility(View.VISIBLE);
+                    mBtn_D.setVisibility(View.VISIBLE);
+                    mBtn_Ds.setVisibility(View.VISIBLE);
+                    mBtn_E.setVisibility(View.VISIBLE);
+                    mBtn_F.setVisibility(View.VISIBLE);
+                    mBtn_Fs.setVisibility(View.VISIBLE);
+                    mBtn_G.setVisibility(View.VISIBLE);
+                    mBtn_Gs.setVisibility(View.VISIBLE);
+                    mBtn_A.setVisibility(View.VISIBLE);
+                    mBtn_As.setVisibility(View.VISIBLE);
+                    mBtn_B.setVisibility(View.VISIBLE);
+                    mBtn_C_High.setVisibility(View.VISIBLE);
+                }
+                else if (position == 2)
+                {
+                    mBtn_C_High.setVisibility(View.VISIBLE);
+                    mBtn_Cs_High.setVisibility(View.VISIBLE);
+                    mBtn_D_High.setVisibility(View.VISIBLE);
+                    mBtn_Ds_High.setVisibility(View.VISIBLE);
+                    mBtn_E_High.setVisibility(View.VISIBLE);
+                    mBtn_F_High.setVisibility(View.VISIBLE);
+                    mBtn_Fs_High.setVisibility(View.VISIBLE);
+                    mBtn_G_High.setVisibility(View.VISIBLE);
+                    mBtn_Gs_High.setVisibility(View.VISIBLE);
+                    mBtn_A_High.setVisibility(View.VISIBLE);
+                    mBtn_As_High.setVisibility(View.VISIBLE);
+                    mBtn_B_High.setVisibility(View.VISIBLE);
+                    mBtn_C_Top.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                for(Button button:mListPianoKeys)
+                {
+                    button.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
     }
     //used for playing and looping beat
@@ -733,10 +816,10 @@ public class MainActivity extends AppCompatActivity
             {
                 if (button.isPressed())
                 {
-                    endTime = System.currentTimeMillis();
-                    length = endTime-startTime;
-                    startTime = endTime;
-                    mListRecordedSounds.add(new Tuple(sample, rate, length));
+                    mEndTime = System.currentTimeMillis();
+                    mLength = mEndTime - mStartTime;
+                    mStartTime = mEndTime;
+                    mListRecordedSounds.add(new Tuple(sample, rate, mLength));
                 }
             }
 

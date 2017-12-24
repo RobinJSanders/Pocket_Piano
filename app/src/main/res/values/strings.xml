@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pocket Piano</string>
+    <string-array name = "Octaves">
+        <item>Low</item>
+        <item>Middle</item>
+        <item>High</item>
+    </string-array>
 </resources>
+
