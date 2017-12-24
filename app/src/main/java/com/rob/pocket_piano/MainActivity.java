@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
     mBtn_C_Low, mBtn_Cs_Low, mBtn_D_Low, mBtn_Ds_Low, mBtn_E_Low, mBtn_F_Low ,mBtn_Fs_Low, mBtn_G_Low , mBtn_Gs_Low, mBtn_A_Low, mBtn_As_Low, mBtn_B_Low,
             mBtn_C_Top, mBtn_Cs_High, mBtn_D_High, mBtn_Ds_High, mBtn_E_High, mBtn_F_High ,mBtn_Fs_High, mBtn_G_High , mBtn_Gs_High, mBtn_A_High, mBtn_As_High, mBtn_B_High,
     //Buttons for starting and stopping the beat
-            mBtn_Beat, mBtn_BeatStop,
+    mBtn_Beat, mBtn_BeatStop,
     //Voice selection buttons
     mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
     //Record and Playback Buttons
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity
     private int mSound_C, mSound_Cs ,mSound_D, mSound_Ds, mSound_E, mSound_F ,mSound_Fs, mSound_G , mSound_Gs, mSound_A, mSound_As, mSound_B, mSound_C_High, mSound_Amen,
     // Colors
     mColor_Black, mColor_White, mColor_LightBlue;
-
-    private CheckBox mChk_Loop;
+    //other member variables
+    private CheckBox mChk_Loop, mChk_AutoTempo;
     private TextView mLbl_State;
     private SoundPool mSoundPool;
     private List<Tuple<Integer,Float,Long>> mListRecordedSounds;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
+    // inner class used for recording
     public class Tuple<Sample,Rate,Length>
     {
         public Sample sample;
@@ -174,16 +174,17 @@ public class MainActivity extends AppCompatActivity
         mBtn_Stop =(ImageButton) findViewById(R.id.Btn_Stop);
         mBtn_Play =(ImageButton) findViewById(R.id.Btn_Play);
         mChk_Loop = (CheckBox) findViewById(R.id.Chk_Loop);
+        mChk_AutoTempo = (CheckBox) findViewById(R.id.Chk_AutoTempo);
         mLbl_State = (TextView) findViewById(R.id.Lbl_State);
 
         //Initialise SoundPool
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP)
         {
-            mSoundPool = new SoundPool.Builder().setMaxStreams(5).build();
+            mSoundPool = new SoundPool.Builder().setMaxStreams(10).build();
         }
         else
         {
-            mSoundPool = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
+            mSoundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
         }
 
 
@@ -624,7 +625,7 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
-
+    //used for playing and looping beat
     private void startThreadBeat()
     {
         Thread t = new Thread(new Runnable(){
@@ -649,7 +650,7 @@ public class MainActivity extends AppCompatActivity
         t.start();
     }
 
-
+    //used for playing back recordings
     public void startThreadTrack(){
         Thread t = new Thread(new Runnable(){
             @Override
@@ -657,11 +658,27 @@ public class MainActivity extends AppCompatActivity
                 mTrackPlaying = true;
                 while(mTrackPlaying)
                 {
+                    Long soundLength;
                     for (Tuple<Integer, Float, Long> sound: mListRecordedSounds )
                     {
+                        if (mChk_AutoTempo.isChecked())
+                        {
+                            if( sound.length < 50L)
+                                soundLength = 0L;
+                            else if( sound.length > 49L && sound.length < 400L)
+                                soundLength = 250L;
+                            else if (sound.length > 399L && sound.length < 900L)
+                                soundLength = 500L;
+                            else
+                                soundLength= 1000L;
+                        }
+                        else
+                        {
+                            soundLength = sound.length;
+                        }
                         try
                         {
-                            Thread.sleep(sound.length);
+                            Thread.sleep(soundLength);
                         } catch (InterruptedException e)
                         {
                             e.printStackTrace();

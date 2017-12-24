@@ -272,26 +272,6 @@
 
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_Settings"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        >
-
-        <CheckBox
-            android:id="@+id/Chk_Loop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Loop Playback"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="263dp"/>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/LiniearLayout_BeatButtons"
         android:layout_width="166dp"
         android:layout_height="50dp"
@@ -330,8 +310,6 @@
         android:id="@+id/LiniearLayout_RecordPlaybackButtons"
         android:layout_width="145dp"
         android:layout_height="52dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons">
@@ -371,6 +349,38 @@
             android:text="Ready"
             />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LiniearLayout_Settings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="-5dp"
+        android:orientation="horizontal"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons">
+
+        <CheckBox
+            android:id="@+id/Chk_Loop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Loop Playback"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="263dp"/>
+
+        <CheckBox
+            android:id="@+id/Chk_AutoTempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="Auto-Adjust Tempo"
+            app:layout_constraintLeft_toRightOf="@+id/LiniearLayout_Settings"
+            tools:layout_editor_absoluteY="287dp"/>
 
     </LinearLayout>
 
