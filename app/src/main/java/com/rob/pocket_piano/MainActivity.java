@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity
 
 
     // inner class used for recording and playback
-    public class Tuple<Sample,Rate,Length>
+    private class Tuple<Sample,Rate,Length>
     {
-        public Sample sample;
-        public Rate rate;
-        public Length length;
+        private Sample sample;
+        private Rate rate;
+        private Length length;
         //constructor
-        public Tuple(Sample sample, Rate rate, Length length)
+        private Tuple(Sample sample, Rate rate, Length length)
         {
             this.sample = sample;
             this.rate = rate;
@@ -810,7 +810,7 @@ public class MainActivity extends AppCompatActivity
     {
         mSoundPool.play(sample,1,1,1,0,rate);
 
-        if (mRecordingState == "Recording")
+        if (mRecordingState.equals("Recording"))
         {
             for (Button button:mListPianoKeys)
             {

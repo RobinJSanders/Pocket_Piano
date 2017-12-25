@@ -21,216 +21,216 @@
         <Button
             android:id="@+id/Btn_C_Low"
             style="@style/WhitePianoKey"
-            android:text="C"
+            android:text="@string/C"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Cs_Low"
             style="@style/BlackPianoKey"
-            android:text="C#"
+            android:text="@string/Cs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_D_Low"
             style="@style/WhitePianoKey"
-            android:text="D"
+            android:text="@string/D"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Ds_Low"
             style="@style/BlackPianoKey"
-            android:text="D#"
+            android:text="@string/Ds"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_E_Low"
             style="@style/WhitePianoKey"
-            android:text="E"
+            android:text="@string/E"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_F_Low"
             style="@style/WhitePianoKey"
-            android:text="F"
+            android:text="@string/F"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Fs_Low"
             style="@style/BlackPianoKey"
-            android:text="F#"
+            android:text="@string/Fs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_G_Low"
             style="@style/WhitePianoKey"
-            android:text="G"
+            android:text="@string/G"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Gs_Low"
             style="@style/BlackPianoKey"
-            android:text="G#"
+            android:text="@string/Gs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_A_Low"
             style="@style/WhitePianoKey"
-            android:text="A"
+            android:text="@string/A"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_As_Low"
             style="@style/BlackPianoKey"
-            android:text="A#"
+            android:text="@string/As"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_B_Low"
             style="@style/WhitePianoKey"
-            android:text="B"
+            android:text="@string/B"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_C"
             style="@style/WhitePianoKey"
-            android:text="C"/>
+            android:text="@string/C"/>
 
         <Button
             android:id="@+id/Btn_Cs"
             style="@style/BlackPianoKey"
-            android:text="C#"/>
+            android:text="@string/Cs"/>
 
         <Button
             android:id="@+id/Btn_D"
             style="@style/WhitePianoKey"
-            android:text="D"/>
+            android:text="@string/D"/>
 
         <Button
             android:id="@+id/Btn_Ds"
             style="@style/BlackPianoKey"
-            android:text="D#"/>
+            android:text="@string/Ds"/>
 
         <Button
             android:id="@+id/Btn_E"
             style="@style/WhitePianoKey"
-            android:text="E"/>
+            android:text="@string/E"/>
 
         <Button
             android:id="@+id/Btn_F"
             style="@style/WhitePianoKey"
-            android:text="F"/>
+            android:text="@string/F"/>
 
         <Button
             android:id="@+id/Btn_Fs"
             style="@style/BlackPianoKey"
-            android:text="F#"/>
+            android:text="@string/Fs"/>
 
         <Button
             android:id="@+id/Btn_G"
             style="@style/WhitePianoKey"
-            android:text="G"/>
+            android:text="@string/G"/>
 
         <Button
             android:id="@+id/Btn_Gs"
             style="@style/BlackPianoKey"
-            android:text="G#"/>
+            android:text="@string/Gs"/>
 
         <Button
             android:id="@+id/Btn_A"
             style="@style/WhitePianoKey"
-            android:text="A"/>
+            android:text="@string/A"/>
 
         <Button
             android:id="@+id/Btn_As"
             style="@style/BlackPianoKey"
-            android:text="A#"/>
+            android:text="@string/As"/>
 
         <Button
             android:id="@+id/Btn_B"
             style="@style/WhitePianoKey"
-            android:text="B"/>
+            android:text="@string/B"/>
 
         <Button
             android:id="@+id/Btn_C_High"
             style="@style/WhitePianoKey"
-            android:text="C"/>
+            android:text="@string/C"/>
 
 
         <Button
             android:id="@+id/Btn_Cs_High"
             style="@style/BlackPianoKey"
-            android:text="C#"
+            android:text="@string/Cs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_D_High"
             style="@style/WhitePianoKey"
-            android:text="D"
+            android:text="@string/D"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Ds_High"
             style="@style/BlackPianoKey"
-            android:text="D#"
+            android:text="@string/Ds"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_E_High"
             style="@style/WhitePianoKey"
-            android:text="E"
+            android:text="@string/E"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_F_High"
             style="@style/WhitePianoKey"
-            android:text="F"
+            android:text="@string/F"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Fs_High"
             style="@style/BlackPianoKey"
-            android:text="F#"
+            android:text="@string/Fs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_G_High"
             style="@style/WhitePianoKey"
-            android:text="G"
+            android:text="@string/G"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_Gs_High"
             style="@style/BlackPianoKey"
-            android:text="G#"
+            android:text="@string/Gs"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_A_High"
             style="@style/WhitePianoKey"
-            android:text="A"
+            android:text="@string/A"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_As_High"
             style="@style/BlackPianoKey"
-            android:text="A#"
+            android:text="@string/As"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_B_High"
             style="@style/WhitePianoKey"
-            android:text="B"
+            android:text="@string/B"
             android:visibility="gone"/>
 
         <Button
             android:id="@+id/Btn_C_Top"
             style="@style/WhitePianoKey"
-            android:text="C"
+            android:text="@string/C"
             android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_VoiceButtons"
+        android:id="@+id/LinearLayout_VoiceButtons"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
@@ -247,59 +247,61 @@
         <Button
             android:id="@+id/Btn_Piano"
             style="@style/VoiceButtonSelected"
-            android:text="Piano"/>
+            android:text="@string/Piano"/>
 
         <Button
             android:id="@+id/Btn_Bass"
             style="@style/VoiceButtonDeselected"
-            android:text="Bass"/>
+            android:text="@string/Bass"/>
 
         <Button
             android:id="@+id/Btn_Brass"
             style="@style/VoiceButtonDeselected"
-            android:text="Brass"/>
+            android:text="@string/Brass"/>
 
         <Button
             android:id="@+id/Btn_Banjo"
             style="@style/VoiceButtonDeselected"
-            android:text="Banjo"/>
+            android:text="@string/Banjo"/>
 
         <Button
             android:id="@+id/Btn_Synth"
             style="@style/VoiceButtonDeselected"
-            android:text="Synth"/>
+            android:text="@string/Synth"/>
     </LinearLayout>
 
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_BeatButtons"
+        android:id="@+id/LinearLayout_BeatButtons"
         android:layout_width="166dp"
         android:layout_height="50dp"
-        android:layout_marginRight="16dp"
         android:orientation="horizontal"
         android:weightSum="1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons"
-        android:layout_marginEnd="16dp">
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="@+id/LinearLayout_OctavePicker"
+        android:layout_marginTop="8dp">
 
         <Button
             android:id="@+id/Btn_Beat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Start Beat"
+            android:text="@string/Start_Beat"
             />
 
         <Button
             android:id="@+id/Btn_BeatStop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:text="Stop Beat"
+            android:text="@string/Stop_Beat"
             android:visibility="gone"
             />
 
@@ -307,12 +309,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_RecordPlaybackButtons"
+        android:id="@+id/LinearLayout_RecordPlaybackButtons"
         android:layout_width="145dp"
         android:layout_height="52dp"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_VoiceButtons">
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/LinearLayout_Settings"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout_VoiceButtons">
 
         <ImageButton
             android:id="@+id/Btn_Record"
@@ -320,8 +325,8 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:src="@drawable/rec"
-
-            android:text="Record"/>
+            android:contentDescription="@string/Record"
+            />
 
         <ImageButton
             android:id="@+id/Btn_Stop"
@@ -330,6 +335,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/stop"
             android:visibility="gone"
+            android:contentDescription="@string/Stop"
             />
 
 
@@ -339,6 +345,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:src="@drawable/play"
+            android:contentDescription="@string/Play"
             />
 
         <TextView
@@ -346,27 +353,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
-            android:text="Ready"
+            android:text="@string/Ready"
             />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_Settings"
+        android:id="@+id/LinearLayout_Settings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LiniearLayout_RecordPlaybackButtons">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp">
 
         <CheckBox
             android:id="@+id/Chk_Loop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Loop Playback"
+            android:text="@string/Loop_Playback"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="263dp"/>
 
@@ -374,22 +382,22 @@
             android:id="@+id/Chk_AutoTempo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="Auto-Adjust Tempo"
-            app:layout_constraintLeft_toRightOf="@+id/LiniearLayout_Settings"
+            android:text="@string/Auto_Adjust_Tempo"
+            app:layout_constraintLeft_toRightOf="@+id/LinearLayout_Settings"
             tools:layout_editor_absoluteY="287dp"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LiniearLayout_OctavePicker"
+        android:id="@+id/LinearLayout_OctavePicker"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LiniearLayout_VoiceButtons"
-        android:layout_marginLeft="170dp"
+        app:layout_constraintTop_toBottomOf="@id/LinearLayout_VoiceButtons"
+        android:layout_marginStart="170dp"
         android:layout_marginTop="0dp">
 
         <TextView
@@ -397,16 +405,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
-            android:text="Select Octave:"
+            android:text="@string/Select_Octave"
             />
 
         <Spinner
             android:id="@+id/Spn_SelectOctave"
             android:layout_marginTop="15sp"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="middle"
             />
 
     </LinearLayout>

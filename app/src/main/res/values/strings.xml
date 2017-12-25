@@ -1,5 +1,31 @@
 <resources>
     <string name="app_name">Pocket Piano</string>
+    <string name="C">C</string>
+    <string name="Cs">C#</string>
+    <string name="D">D</string>
+    <string name="Ds">D#</string>
+    <string name="E">Es</string>
+    <string name="F">F</string>
+    <string name="Fs">Fs</string>
+    <string name="G">G</string>
+    <string name="Gs">Gs</string>
+    <string name="A">A</string>
+    <string name="As">As</string>
+    <string name="B">B</string>
+    <string name="Piano">Piano</string>
+    <string name="Bass">Bass</string>
+    <string name="Brass">Brass</string>
+    <string name="Banjo">Banjo</string>
+    <string name="Synth">Synth</string>
+    <string name="Loop_Playback">Loop Playback</string>
+    <string name="Auto_Adjust_Tempo">Auto-Adjust Tempo</string>
+    <string name="Ready">Ready</string>
+    <string name="Record">Record</string>
+    <string name="Play">Play</string>
+    <string name="Stop">Stop</string>
+    <string name="Start_Beat">Start Beat</string>
+    <string name="Stop_Beat">Stop Beat</string>
+    <string name="Select_Octave">Select Octave:</string>
     <string-array name = "Octaves">
         <item>Low</item>
         <item>Middle</item>
