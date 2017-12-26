@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
     mBtn_C_Low, mBtn_Cs_Low, mBtn_D_Low, mBtn_Ds_Low, mBtn_E_Low, mBtn_F_Low ,mBtn_Fs_Low, mBtn_G_Low , mBtn_Gs_Low, mBtn_A_Low, mBtn_As_Low, mBtn_B_Low,
             mBtn_C_Top, mBtn_Cs_High, mBtn_D_High, mBtn_Ds_High, mBtn_E_High, mBtn_F_High ,mBtn_Fs_High, mBtn_G_High , mBtn_Gs_High, mBtn_A_High, mBtn_As_High, mBtn_B_High,
     //Buttons for starting and stopping the beat
-    mBtn_Beat, mBtn_BeatStop,
+    mBtn_BeatPlay, mBtn_BeatStop,
     //Voice selection buttons
     mBtn_Piano, mBtn_Bass, mBtn_Brass, mBtn_Banjo, mBtn_Synth;
     //Record and Playback Buttons
@@ -77,6 +77,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //assign references to views for keyboard keys
+        mBtn_C_Low =(Button) findViewById(R.id.Btn_C_Low);
+        mBtn_Cs_Low = (Button) findViewById(R.id.Btn_Cs_Low);
+        mBtn_D_Low =(Button) findViewById(R.id.Btn_D_Low);
+        mBtn_Ds_Low =(Button) findViewById(R.id.Btn_Ds_Low);
+        mBtn_E_Low =(Button) findViewById(R.id.Btn_E_Low);
+        mBtn_F_Low =(Button) findViewById(R.id.Btn_F_Low);
+        mBtn_Fs_Low =(Button) findViewById(R.id.Btn_Fs_Low);
+        mBtn_G_Low=(Button) findViewById(R.id.Btn_G_Low);
+        mBtn_Gs_Low =(Button) findViewById(R.id.Btn_Gs_Low);
+        mBtn_A_Low =(Button) findViewById(R.id.Btn_A_Low);
+        mBtn_As_Low =(Button) findViewById(R.id.Btn_As_Low);
+        mBtn_B_Low =(Button) findViewById(R.id.Btn_B_Low);
         mBtn_C =(Button) findViewById(R.id.Btn_C);
         mBtn_Cs = (Button) findViewById(R.id.Btn_Cs);
         mBtn_D =(Button) findViewById(R.id.Btn_D);
@@ -90,26 +102,6 @@ public class MainActivity extends AppCompatActivity
         mBtn_As =(Button) findViewById(R.id.Btn_As);
         mBtn_B =(Button) findViewById(R.id.Btn_B);
         mBtn_C_High =(Button) findViewById(R.id.Btn_C_High);
-
-        //create reference to start and stop beat buttons
-        mBtn_Beat = (Button) findViewById(R.id.Btn_Beat) ;
-        mBtn_BeatStop = (Button) findViewById(R.id.Btn_BeatStop);
-
-        //more keys used for tablet view only
-        //lower keys
-        mBtn_C_Low =(Button) findViewById(R.id.Btn_C_Low);
-        mBtn_Cs_Low = (Button) findViewById(R.id.Btn_Cs_Low);
-        mBtn_D_Low =(Button) findViewById(R.id.Btn_D_Low);
-        mBtn_Ds_Low =(Button) findViewById(R.id.Btn_Ds_Low);
-        mBtn_E_Low =(Button) findViewById(R.id.Btn_E_Low);
-        mBtn_F_Low =(Button) findViewById(R.id.Btn_F_Low);
-        mBtn_Fs_Low =(Button) findViewById(R.id.Btn_Fs_Low);
-        mBtn_G_Low=(Button) findViewById(R.id.Btn_G_Low);
-        mBtn_Gs_Low =(Button) findViewById(R.id.Btn_Gs_Low);
-        mBtn_A_Low =(Button) findViewById(R.id.Btn_A_Low);
-        mBtn_As_Low =(Button) findViewById(R.id.Btn_As_Low);
-        mBtn_B_Low =(Button) findViewById(R.id.Btn_B_Low);
-        //higher keys
         mBtn_Cs_High = (Button) findViewById(R.id.Btn_Cs_High);
         mBtn_D_High =(Button) findViewById(R.id.Btn_D_High);
         mBtn_Ds_High =(Button) findViewById(R.id.Btn_Ds_High);
@@ -122,6 +114,11 @@ public class MainActivity extends AppCompatActivity
         mBtn_As_High =(Button) findViewById(R.id.Btn_As_High);
         mBtn_B_High =(Button) findViewById(R.id.Btn_B_High);
         mBtn_C_Top =(Button) findViewById(R.id.Btn_C_Top);
+
+
+        //create reference to start and stop beat buttons
+        mBtn_BeatPlay = (Button) findViewById(R.id.Btn_Beat) ;
+        mBtn_BeatStop = (Button) findViewById(R.id.Btn_BeatStop);
 
         //create an array list for every piano key
         mListPianoKeys = new ArrayList<>();
@@ -523,13 +520,13 @@ public class MainActivity extends AppCompatActivity
         mSpn_SelectOctave.setAdapter(mArrayAdapter);
         mSpn_SelectOctave.setSelection(1);
 
-        //OnClickListener for beat button
-        mBtn_Beat.setOnClickListener(new View.OnClickListener()
+        //OnClickListener for beat buttons
+        mBtn_BeatPlay.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                mBtn_Beat.setVisibility(View.GONE);
+                mBtn_BeatPlay.setVisibility(View.GONE);
                 mBtn_BeatStop.setVisibility(View.VISIBLE);
                 startThreadBeat();
             }
@@ -540,7 +537,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 mBeatPlaying = false;
-                mBtn_Beat.setVisibility(View.VISIBLE);
+                mBtn_BeatPlay.setVisibility(View.VISIBLE);
                 mBtn_BeatStop.setVisibility(View.GONE);
             }
         });
@@ -635,7 +632,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-       //Event handler for spinner
+       //Event handler for spinner, sets visibility of piano keys based on octave selected
         mSpn_SelectOctave.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -745,7 +742,7 @@ public class MainActivity extends AppCompatActivity
                     for (Tuple<Integer, Float, Long> sound: mListRecordedSounds )
                     {
                         if (mChk_AutoTempo.isChecked())
-                        {
+                        {// adjusts tempo to be consistent with 120 bpm of the beat
                             if( sound.length < 50L)
                                 soundLength = 0L;
                             else if( sound.length > 49L && sound.length < 400L)
@@ -784,7 +781,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
+    //used for changing the string which shows the current recording state and changes visibility of buttons based on the state
     private void switchState(String state)
     {
 
@@ -805,7 +802,7 @@ public class MainActivity extends AppCompatActivity
         mLbl_State.setText(state);
     }
 
-
+    //used for playing each note, will add each note to recorded sounds list if recording
     private void playSound(int sample, float rate)
     {
         mSoundPool.play(sample,1,1,1,0,rate);

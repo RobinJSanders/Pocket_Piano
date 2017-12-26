@@ -395,10 +395,10 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LinearLayout_VoiceButtons"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="4dp"
+        app:layout_constraintLeft_toRightOf="@+id/LinearLayout_RecordPlaybackButtons"
+        android:layout_marginLeft="51dp">
 
         <TextView
             android:id="@+id/Lbl_Octave"
