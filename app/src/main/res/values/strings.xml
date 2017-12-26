@@ -4,13 +4,13 @@
     <string name="Cs">C#</string>
     <string name="D">D</string>
     <string name="Ds">D#</string>
-    <string name="E">Es</string>
+    <string name="E">E#</string>
     <string name="F">F</string>
-    <string name="Fs">Fs</string>
+    <string name="Fs">F#</string>
     <string name="G">G</string>
-    <string name="Gs">Gs</string>
+    <string name="Gs">G#</string>
     <string name="A">A</string>
-    <string name="As">As</string>
+    <string name="As">A#</string>
     <string name="B">B</string>
     <string name="Piano">Piano</string>
     <string name="Bass">Bass</string>

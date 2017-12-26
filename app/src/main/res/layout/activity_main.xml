@@ -394,7 +394,7 @@
         android:id="@+id/LinearLayout_OctavePicker"
         android:layout_width="175dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintLeft_toRightOf="@+id/LinearLayout_RecordPlaybackButtons"
