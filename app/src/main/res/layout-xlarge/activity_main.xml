@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/LinearLayout_PianoKeys"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:background="@color/grey"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.0"
@@ -317,7 +317,7 @@
             android:layout_weight="1"
             android:text="@string/Stop_Beat"
             android:visibility="gone"
-            />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
